@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candyland</title>
+    <link rel="shortcut icon" href="img/icons8-brigadeiro-16.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #header{
+            background: url(img/capa04.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header
+        id="header"
+        class="relative w-full h-[420px] bg-[url('/img/capa04.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-zinc-900/50"></div>
+        <div class="relative w-full h-full flex flex-col justify-center items-center">
+            <img src="img/logo1.png" alt="logo" class="w-32 h-32 rounded-full shadow-lg
+            hover:scale-110 hover:duration-200
+            cursor-pointer">
+            <h1 class="text-3xl mt-4 mb-2 font-bold text-white">
+                Candy Land
+            </h1>
+            <span class="text-white font-medium">Rua dos doces nº 01</span>
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-spam">
+                <span class="text-white font-medium"> Seg á Dom - 17:30 as 23:00</span>
+            </div>
+        </div>
+    </header>
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+        Conheça nosso Menu
+    </h2>
+    <div id="menu">
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            <div class="flex gap-2 bg-white px-2 py-2 rounded">
+                <img src="img/doce01_brigadeiro.jpg" alt="brigadeiro"
+                    class="w-28 h-28 hover:scale-110 hover:rotate-1 hover:duration-200 rounded">
+                <div>
+                    <p class="font-bold">Brigadeiro</p>
+                    <p class="text-sm">
+                        O clássico que nunca sai de moda! Feito com chocolate de alta qualidade e leite condensado
+                        cremoso, e coberto com granulados especiais que derretem na
+                        boca.
+                    </p>
+                    <div class="flex items-center gap-2 justify-between">
+                        <p class="font-bold text-lg">R$ 5,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 hover:bg-green-400 duration-200 hover:cursor-pointer add-to-card-btn"
+                            data-name="Brigadeiro">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex gap-2 bg-white px-2 py-2 rounded">
+                <img src="img/doce02_branco.jpg" alt="Brigadeiro Branco"
+                    class="w-28 h-28 hover:scale-110 hover:rotate-1 hover:duration-200 rounded">
+                <div>
+                    <p class="font-bold">Brigadeiro Branco</p>
+                    <p class="text-sm">
+                        Feito com chocolate branco de alta qualidade e leite condensado cremoso e coberto com raspas de
+                        chocolate branco que derretem na boca.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-lg">R$ 7,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400  add-to-card-btn"
+                            data-name="Brigadeiro Branco">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-2 bg-white px-2 py-2 rounded">
+                <img src="img/doce13_ferrero.jpg" alt="Brigadeiro Ferrero Rocher"
+                    class="w-28 h-28 hover:scale-110 hover:rotate-1 rounded duration-200">
+                <div>
+                    <p class="font-bold">Brigadeiro de Ferrero Rocher</p>
+                    <p class="text-sm">
+                        Brigadeiro gourmet sabor Ferrero Rocher com o
+                        sabor marcante do chocolate nobre, pedacinhos crocantes de avelã e finalização com um toque
+                        irresistível de Nutella.</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 10,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400  add-to-card-btn"
+                            data-name="Brigadeiro Ferrero Rocher">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white px-2 py-2 rounded">
+                <img src="img/doce04_beijinho.jpg" alt="Beijinho"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Beijinho</p>
+                    <p>Delicadamente preparado com leite condensado cremoso e o sabor suave do coco, nosso beijinho é
+                        enrolado com carinho e finalizado com açúcar cristal.</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 10,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Beijinho">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce05_morango.jpg" alt="Brigadeiro de Morango"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Brigadeiro de Morango</p>
+                    <p class="text-sm">Nosso brigadeiro de morango é feito com ingredientes selecionados, trazendo a
+                        cremosidade do leite condensado combinada ao frescor do morango. Finalizado com granulados ou
+                        açúcar cristal.</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 15,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Brigadeiro de Morango">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce06_ninho.jpg" alt="Brigadeiro de Ninho"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Brigadeiro de Ninho</p>
+                    <p class="text-sm">
+                        Feito com leite em pó de alta qualidade, nosso brigadeiro de Ninho derrete na boca e conquista
+                        pelo sabor delicado e marcante. Finalizado com uma leve camada de leite em pó.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 10,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Brigadeiro de Ninho">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce07_coxinha_choco.jpg" alt="Coxinha de Chocolate"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Coxinha de Chocolate</p>
+                    <p class="text-sm">A releitura mais doce do salgado mais amado do Brasil! Nossa coxinha de chocolate
+                        é feita com massa macia e saborosa, recheada com creme de chocolate cremoso e morango e
+                        finalizada com uma cobertura irresistível de cacau e confeitos.</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 15,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Brigadeiro de Ninho">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce08_coxinha_branco.jpg" alt="Coxinha de Chocolate Branco"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold ">Coxinha de Chocolate Branco</p>
+                    <p class="text-sm">
+                        Nossa coxinha de chocolate brnaco é feita com massa macia e saborosa, recheada com creme de
+                        chocolate branco cremoso e morango e finalizada com uma cobertura irresistível de raspas de
+                        chocolate branco e Ninho.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 15,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Coxinha de chocolate branco">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce08_morango_amor.jpg" alt="Morango do Amor"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Morango do Amor</p>
+                    <p class="text-sm">
+                        Clássico, romântico e irresistível! O morango do amor traz a doçura da fruta fresca envolta em
+                        uma casquinha crocante de caramelo brilhante. Cada mordida é a combinação perfeita entre o
+                        azedinho do morango e o doce marcante da cobertura, tornando esse mimo uma explosão de sabor e
+                        nostalgia que conquista corações.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 10,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Morango do amor">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce12_brownie.jpg" alt="Brownie"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Brownie</p>
+                    <p class="text-sm">
+                        Intenso, úmido e cheio de sabor! Nosso brownie é feito com chocolate de alta qualidade,
+                        resultando em uma massa macia por dentro e levemente crocante por fora. Cada pedaço é uma
+                        explosão de sabor que une cremosidade e intensidade na medida certa, perfeito para acompanhar um
+                        café ou ser saboreado sozinho. Uma verdadeira tentação para os amantes de chocolate!
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 20,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Brownie">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce09_cenoura.jpg" alt="Bolo Cenoura Vulcão"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Bolo Vulcão Cenoura com cobertura de Chocolate</p>
+                    <p class="text-sm">
+                        O clássico bolo de cenoura em uma versão ainda mais especial! Nosso mini bolo fofinho é recheado
+                        e coberto com uma generosa calda de chocolate cremosa que transborda como um verdadeiro vulcão
+                        de sabor. Cada pedaço é a combinação perfeita entre a maciez da massa e a intensidade do
+                        chocolate, feito para conquistar quem não resiste a um doce caseiro com aquele toque gourmet.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 25,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Bolo Cenoura">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/doce10_prestigio.jpg" alt="Bolo Vulcão Prestígio"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div>
+                    <p class="font-bold">Bolo Vulcão Prestígio</p>
+                    <p class="text-sm">
+                        Uma explosão irresistível de sabor! Nosso bolo fofinho de chocolate é recheado e coberto com um
+                        delicioso creme de coco cremoso, finalizado com uma generosa calda de chocolate que transborda
+                        como um verdadeiro vulcão. A combinação clássica de chocolate e coco, em uma versão ainda mais
+                        especial, perfeita para surpreender e adoçar qualquer ocasião.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">R$ 20,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Vulcão Prestígio">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Bebidas</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6"></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
+
+            <div class="flex gap-2 bg-white rounded px-2 py-2">
+                <img src="img/refri-1.png" alt="Coca-Cola lata"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div class="w-full">
+                    <p class="font-bold">Coca-Cola (lata)</p>
+                    <p class="text-sm mb-6">Refrigerente Coca-Cola lata 350 ml.</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold">8,50</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Coca Cola">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex  bg-white rounded px-2 py-2">
+
+                <img src="img/refri-2.png" alt="Guárana Lata"
+                    class="w-28 h-28 rounded hover:scale-110 hover:rotate-1 duration-200">
+                <div class="w-full">
+                    <p class="font-bold">Guaraná (lata)</p>
+                    <p class="text-sm mb-6">Refrigerente Guaraná lata 350 ml.</p>
+                    <div class="flex items-center justify-between">
+                        <p>R$ 8,50</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Coca Cola">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex bg-white rounded px-2 py-2">
+                <img src="img/h20.png" alt="H20" class="w-28 h-28 hover:scale-110 hover:rotate-1 duration-200">
+                <div class="w-full">
+                    <p class="font-bold">H2O (gafarrafa)</p>
+                    <p class="text-sm mb-6">Refrigerente H2O garrafa 650 ml.</p>
+                    <div class="flex items-center justify-between">
+                        <p>R$ 15,00</p>
+                        <button
+                            class="bg-gray-900 px-5 rounded hover:scale-90 duration-200 hover:cursor-pointer hover:bg-green-400   add-to-card-btn"
+                            data-name="Coca Cola">
+                            <i class="fa fa-cart-plus text-lg text-white hover:text-black"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="bg-black/50 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
+        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+            <h2 class="text-2xl md:text-3xl font-bold text-center">
+                Meu carrinho
+            </h2>
+
+            <div id="cart-items" class="flex justify-between mb-2 flex-col">
+
+            </div>
+
+            <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+            <p class="font-bold mt-4">Endereço de entrga:</p>
+
+            <input type="text" placeholder="Digite seu endereço" id="address" class="w-full border-2 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+
+            <div class="flex justify-between">
+                <button id="closse-modal-btn"
+                    class="bg-red-500 text-white rounded mt-3 px-2 py-1 hover:scale-110 duration-200 ">Fechar</button>
+                <button id="checkout-btn"
+                    class="bg-green-500 text-white rounded mt-3 px-2 py-1 hover:scale-110 duration-200 ">Finalizar
+                    Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-red-500 py-2 fixed bottom-0 w-full z-40 flex items-center justify-center">
+        <button
+            class="flex items-center justify-center gap-1 rounded font-bold text-white hover:scale-90 duration-200 hover:cursor-pointer "
+            id="cart-btn">
+            (<span id="cart-count">2</span>)
+            Veja meu carrinho
+            <i class="fa fa-cart-plus text-lg text-white"></i>
+        </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
