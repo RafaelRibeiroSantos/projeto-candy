@@ -1,5 +1,7 @@
 // Dados do carrinho
 let cart = [];
+let selectedProductForModal = null;
+let selectedQuantity = 1;
 
 // Preços dos produtos
 const prices = {
@@ -19,28 +21,136 @@ const prices = {
     "H2O": 15.00
 };
 
-// Elementos do DOM
+// Elementos do DOM - Modais
 const addToCardBtns = document.querySelectorAll('.add-to-card-btn');
 const cartBtn = document.getElementById('cart-btn');
-const cartModal = document.querySelector('.bg-black\\/50');
+const cartModal = document.getElementById('cart-modal');
+const productModal = document.getElementById('product-modal');
 const closeModalBtn = document.getElementById('closse-modal-btn');
+const closeProductModalBtn = document.getElementById('close-product-modal');
 const checkoutBtn = document.getElementById('checkout-btn');
+
+// Elementos do carrinho
 const cartItemsContainer = document.getElementById('cart-items');
 const cartCountSpan = document.getElementById('cart-count');
 const cartTotalSpan = document.getElementById('cart-total');
 const addressInput = document.getElementById('address');
 const addressWarning = document.getElementById('address-warn');
 
+// Elementos do modal de produto
+const productName = document.getElementById('product-name');
+const productImage = document.getElementById('product-image');
+const productDescription = document.getElementById('product-description');
+const productPrice = document.getElementById('product-price');
+const productQtyInput = document.getElementById('product-qty');
+const decreaseQtyBtn = document.getElementById('decrease-qty');
+const increaseQtyBtn = document.getElementById('increase-qty');
+const confirmProductBtn = document.getElementById('confirm-product');
+const cancelProductBtn = document.getElementById('cancel-product');
+
 // Event Listeners
 addToCardBtns.forEach(btn => {
-    btn.addEventListener('click', addToCart);
+    btn.addEventListener('click', openProductModal);
 });
 
-cartBtn.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
+cartBtn.addEventListener('click', openCartModal);
+closeModalBtn.addEventListener('click', closeCartModal);
+closeProductModalBtn.addEventListener('click', closeProductModal);
+cancelProductBtn.addEventListener('click', closeProductModal);
 checkoutBtn.addEventListener('click', checkout);
+decreaseQtyBtn.addEventListener('click', decreaseQuantityModal);
+increaseQtyBtn.addEventListener('click', increaseQuantityModal);
+confirmProductBtn.addEventListener('click', addToCartFromModal);
 
-// Função para adicionar item ao carrinho
+// Função para abrir modal de produto
+function openProductModal(e) {
+    const btn = e.currentTarget;
+    const productNameValue = btn.getAttribute('data-name');
+    const price = prices[productNameValue];
+
+    if (!price) {
+        console.error(`Produto "${productNameValue}" não encontrado na lista de preços`);
+        return;
+    }
+
+    selectedProductForModal = productNameValue;
+    selectedQuantity = 1;
+
+    // Preencher dados do modal
+    productName.textContent = productNameValue;
+    productPrice.textContent = price.toFixed(2);
+    productQtyInput.value = 1;
+    
+    // Tentar obter informações do produto (imagem e descrição)
+    const productCard = btn.closest('.flex');
+    if (productCard) {
+        const img = productCard.querySelector('img');
+        const description = productCard.querySelector('p.text-sm');
+        
+        if (img) {
+            productImage.src = img.src;
+            productImage.alt = img.alt;
+        }
+        if (description) {
+            productDescription.textContent = description.textContent;
+        } else {
+            productDescription.textContent = '';
+        }
+    }
+
+    // Abrir modal
+    productModal.classList.remove('hidden');
+    productModal.classList.add('flex');
+}
+
+// Função para fechar modal de produto
+function closeProductModal() {
+    productModal.classList.add('hidden');
+    productModal.classList.remove('flex');
+    selectedProductForModal = null;
+    selectedQuantity = 1;
+}
+
+// Aumentar quantidade no modal
+function increaseQuantityModal() {
+    selectedQuantity++;
+    productQtyInput.value = selectedQuantity;
+}
+
+// Diminuir quantidade no modal
+function decreaseQuantityModal() {
+    if (selectedQuantity > 1) {
+        selectedQuantity--;
+        productQtyInput.value = selectedQuantity;
+    }
+}
+
+// Adicionar ao carrinho a partir do modal
+function addToCartFromModal() {
+    if (!selectedProductForModal) return;
+
+    const price = prices[selectedProductForModal];
+    const quantity = parseInt(productQtyInput.value) || 1;
+
+    // Verificar se o produto já está no carrinho
+    const existingItem = cart.find(item => item.name === selectedProductForModal);
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            name: selectedProductForModal,
+            price: price,
+            quantity: quantity
+        });
+    }
+
+    updateCart();
+    showNotification(`${quantity}x ${selectedProductForModal} adicionado ao carrinho!`);
+    closeProductModal();
+}
+
+// Função para adicionar item ao carrinho (mantida para compatibilidade)
 function addToCart(e) {
     const productName = e.currentTarget.getAttribute('data-name');
     const price = prices[productName];
@@ -141,16 +251,16 @@ function removeFromCart(index) {
     updateCart();
 }
 
-// Função para abrir modal
-function openModal() {
+// Função para abrir modal do carrinho
+function openCartModal() {
     cartModal.classList.remove('hidden');
     cartModal.classList.add('flex');
     addressInput.value = '';
     addressWarning.classList.add('hidden');
 }
 
-// Função para fechar modal
-function closeModal() {
+// Função para fechar modal do carrinho
+function closeCartModal() {
     cartModal.classList.add('hidden');
     cartModal.classList.remove('flex');
 }
@@ -204,7 +314,7 @@ function checkout() {
     // Limpar carrinho
     cart = [];
     updateCart();
-    closeModal();
+    closeCartModal();
 
     showNotification('Pedido enviado com sucesso!');
 }
@@ -231,10 +341,28 @@ function loadCart() {
     }
 }
 
-// Fechar modal ao clicar fora dele
+// Fechar modal do carrinho ao clicar fora dele
 cartModal.addEventListener('click', (e) => {
     if (e.target === cartModal) {
-        closeModal();
+        closeCartModal();
+    }
+});
+
+// Fechar modal de produto ao clicar fora dele
+productModal.addEventListener('click', (e) => {
+    if (e.target === productModal) {
+        closeProductModal();
+    }
+});
+
+// Atualizar quantidade ao digitar no input
+productQtyInput.addEventListener('change', (e) => {
+    const value = parseInt(e.target.value) || 1;
+    if (value < 1) {
+        productQtyInput.value = 1;
+        selectedQuantity = 1;
+    } else {
+        selectedQuantity = value;
     }
 });
 
