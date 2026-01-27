@@ -242,4 +242,4 @@ cartModal.addEventListener('click', (e) => {
 addressInput.addEventListener('blur', validateAddress);
 
 // Inicializar
-loadCart();
+// loadCart(); // Desabilitado para que o carrinho sempre comece vazio
