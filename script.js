@@ -66,6 +66,7 @@ confirmProductBtn.addEventListener('click', addToCartFromModal);
 function openProductModal(e) {
     const btn = e.currentTarget;
     const productNameValue = btn.getAttribute('data-name');
+    const imageUrl = btn.getAttribute('data-image');
     const price = prices[productNameValue];
 
     if (!price) {
@@ -81,20 +82,28 @@ function openProductModal(e) {
     productPrice.textContent = price.toFixed(2);
     productQtyInput.value = 1;
     
-    // Tentar obter informações do produto (imagem e descrição)
+    // Preencher imagem
+    if (imageUrl) {
+        productImage.src = imageUrl;
+        console.log('Imagem carregada:', imageUrl);
+    } else {
+        console.warn('data-image não encontrado, tentando querySelector');
+        // Fallback: tentar obter imagem do card
+        const productCard = btn.closest('.flex');
+        if (productCard) {
+            const img = productCard.querySelector('img');
+            if (img && img.src) {
+                productImage.src = img.src;
+                productImage.alt = img.alt;
+                console.log('Imagem carregada (fallback):', img.src);
+            }
+        }
+    }
+    
+    // Tentar obter descrição
     const productCard = btn.closest('.flex');
     if (productCard) {
-        const img = productCard.querySelector('img');
         const description = productCard.querySelector('p.text-sm');
-        
-        if (img && img.src) {
-            productImage.src = img.src;
-            productImage.alt = img.alt;
-            console.log('Imagem carregada:', img.src);
-        } else {
-            console.warn('Imagem não encontrada ou src vazio');
-            productImage.src = '';
-        }
         if (description) {
             productDescription.textContent = description.textContent;
         } else {
