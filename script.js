@@ -87,9 +87,13 @@ function openProductModal(e) {
         const img = productCard.querySelector('img');
         const description = productCard.querySelector('p.text-sm');
         
-        if (img) {
+        if (img && img.src) {
             productImage.src = img.src;
             productImage.alt = img.alt;
+            console.log('Imagem carregada:', img.src);
+        } else {
+            console.warn('Imagem não encontrada ou src vazio');
+            productImage.src = '';
         }
         if (description) {
             productDescription.textContent = description.textContent;
